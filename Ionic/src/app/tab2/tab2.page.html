@@ -4,29 +4,21 @@
       	Todos os Memes
     </ion-title>
   </ion-toolbar>
+
   <ion-grid>
     <ion-row>
       <span class="grid-name">Lista de Memes</span>
-      <ion-col size="4">
-        <ion-card>
-          <h1>Wee Woo</h1>
-        </ion-card>
-      </ion-col>
-      <ion-col size="4">
-        <ion-card>
-          <h1>Wee woo</h1>
-        </ion-card>
-      </ion-col>
-      <ion-col size="4">
-        <ion-card>
-          <h1>Wee woo</h1>
-        </ion-card>
-      </ion-col>
-      <ion-col size="4">
-        <ion-card>
-          <h1>Wee woo</h1>
+      <ion-col size="4" *ngFor="let meme of memes">
+        <ion-card button (click)="presentModal(meme)">
+          <ion-card-header>{{meme.nome}}</ion-card-header>
+          <ion-card-subtitle>{{meme.descricao}}</ion-card-subtitle>
+          <ion-card-content>
+            <ion-img src={{meme.imagem}}></ion-img>
+            <ion-progress-bar value="{{meme.nivel/10}}"></ion-progress-bar>
+          </ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
+  
 </ion-content>
