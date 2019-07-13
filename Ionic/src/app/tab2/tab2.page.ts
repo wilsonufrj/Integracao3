@@ -10,6 +10,7 @@ import { MemePopupComponent } from '../meme-popup/meme-popup.component'
 })
 export class Tab2Page {
   memes;
+	data;
   constructor(
     public memeService: MemeService,
     public popupController: ModalController) {
@@ -28,11 +29,19 @@ export class Tab2Page {
         'isNew': false
       }
     });
+		popover.onDidDismiss().then((data) => {
+			this.data = data['changed'];
+			if(this.data){
+				this.updateMemes();
+				this.data = false;
+			}
+		});
 		console.log(meme);
+
     return await popover.present();
   }
 
-  ngOnInit(){
+	updateMemes(): void {
     this.memeService.getMemes().subscribe(
       (res) => {
         console.log(res);
@@ -42,6 +51,10 @@ export class Tab2Page {
         }
       }
     );
+	}
+
+  ngOnInit(){
+		this.updateMemes();
   }
 
 

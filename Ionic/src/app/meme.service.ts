@@ -21,18 +21,19 @@ export class MemeService {
       this.backendURL + 'meme', {
         nome: meme.nome,
         descricao: meme.descricao,
-        imagem: meme.imagem,
-        nivel: meme.nivel
+        nivel: meme.nivel,
+        imagem: meme.imagem
       });
   }
 
   public updateMeme(meme,id):Observable<any> {
+		console.log(this.backendURL + 'meme/' + id);
     return this.http.put(
       this.backendURL + 'meme/' + id, {
         nome: meme.nome,
         descricao: meme.descricao,
-        imagem: meme.imagem,
-        nivel: meme.nivel
+        nivel: meme.nivel,
+        imagem: meme.imagem
       });
   }
 

@@ -17,36 +17,47 @@ export class MemePopupComponent implements OnInit {
   imagem: string;
   isNew: boolean;
 
+  form = {
+		id: '',
+		nome: '',
+		descricao: '',
+		nivel: '',
+		imagem: ''
+	} ;
   constructor( public navParams: NavParams,
     public memeService: MemeService,
     public modalController: ModalController) {
 
-    this.id = this.navParams.get('id');
-    this.nome = this.navParams.get('nome');
-    this.descricao = this.navParams.get('descricao');
-    this.nivel = this.navParams.get('nivel');
-    this.imagem = this.navParams.get('imagem');
+    this.form.id = this.navParams.get('id');
+    this.form.nome = this.navParams.get('nome');
+    this.form.descricao = this.navParams.get('descricao');
+    this.form.nivel = this.navParams.get('nivel');
+    this.form.imagem = this.navParams.get('imagem');
     this.isNew = this.navParams.get('isNew');
   }
 
   ngOnInit() {}
 
   onSubmit(meme){
+	console.log(meme)
+	console.log(this.form)
     if(this.isNew){
-      this.memeService.createMeme(meme).subscribe(
+      this.memeService.createMeme(this.form).subscribe(
         (res) => {
           console.log('created');
           console.log(res);
         }
       )
     } else {
-      this.memeService.updateMeme(meme,this.id).subscribe(
+      this.memeService.updateMeme(this.form,this.form.id).subscribe(
         (res) => {
           console.log('updated');
           console.log(res);
         }
       )
     }
+		this.dismiss(true);
+	
   }
 
   deleteMeme(meme) {
@@ -58,11 +69,14 @@ export class MemePopupComponent implements OnInit {
     )
   }
 
-  dismiss() {
+  dismiss(value:boolean) {
+		var changed = false;
+		changed = value;
     // using the injected ModalController this page
     // can "dismiss" itself and optionally pass back data
     this.modalController.dismiss({
-      'dismissed': true
+      'dismissed': true,
+			'changed': changed
     });
   }
 }

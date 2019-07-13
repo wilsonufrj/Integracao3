@@ -41,9 +41,9 @@ class MemeController extends Controller
      * @param  \App\Meme  $meme
      * @return \Illuminate\Http\Response
      */
-    public function show(Meme $meme)
+    public function show($id)
     {
-		$resultado = Meme::findOrFail($meme);
+		$resultado = Meme::findOrFail($id);
 		return response()->json([$resultado]);
     }
 
@@ -54,7 +54,7 @@ class MemeController extends Controller
      * @param  \App\Meme  $meme
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Meme $id)
+    public function update(Request $request, $id)
     {
         $meme = Meme::findOrFail($id); 
 
@@ -67,6 +67,7 @@ class MemeController extends Controller
 		if ($request->imagem)
 			$meme->imagem = $request->imagem;
 		
+		$meme->save();
 		return response()->json([$meme]);
     }
 
@@ -76,9 +77,9 @@ class MemeController extends Controller
      * @param  \App\Meme  $meme
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Meme $meme)
+    public function destroy($id)
     {
-		Meme::destroy($meme);
+		Meme::destroy($id);
 		return response()->json(['MEME REVIEW']);
     }
 }

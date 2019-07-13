@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { PopoverController } from '@ionic/angular';
+import { MemeService } from '../meme.service';
+import { ModalController } from '@ionic/angular';
 import { MemePopupComponent } from '../meme-popup/meme-popup.component'
 
 @Component({
@@ -9,20 +10,17 @@ import { MemePopupComponent } from '../meme-popup/meme-popup.component'
 })
 export class TabsPage {
 
-  constructor(public popupController: PopoverController) {}
+  constructor(public modalController: ModalController) {}
 
-  async presentPopover(ev:any) {
-    const popover = await this.popupController.create({
+  async presentModal(ev:any) {
+    const modal = await this.modalController.create({
       component: MemePopupComponent,
       componentProps: {
         'isNew': true
       },
-      cssClass: 'meme-popover',
-      event:ev,
-      translucent: true,
     });
 		console.log('No Meme');
-    return await popover.present();
+    return await modal.present();
   }
 
 }
