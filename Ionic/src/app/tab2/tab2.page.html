@@ -9,7 +9,7 @@
     <ion-row>
       <span class="grid-name">Lista de Memes</span>
       <ion-col size="4" *ngFor="let meme of memes">
-        <ion-card button (click)="presentModal(meme)">
+        <ion-card button (click)="presentPopover(meme)">
           <ion-card-header>{{meme.nome}}</ion-card-header>
           <ion-card-subtitle>{{meme.descricao}}</ion-card-subtitle>
           <ion-card-content>

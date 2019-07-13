@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MemeService }  from '../meme.service';
 import { ModalController } from '@ionic/angular';
-import { MemeModalPage } from '../meme-modal/meme-modal.page';
+import { MemePopupComponent } from '../meme-popup/meme-popup.component'
 
 @Component({
   selector: 'app-tab2',
@@ -10,23 +10,26 @@ import { MemeModalPage } from '../meme-modal/meme-modal.page';
 })
 export class Tab2Page {
   memes;
-  constructor(public memeService: MemeService, public modalController: ModalController) {
-    
+  constructor(
+    public memeService: MemeService,
+    public popupController: ModalController) {
+
   }
 
-  async presentModal (meme){
-    const modal = await this.modalController.create({
-      component: MemeModalPage,
-      backdropDismiss: true,
-      showBackdrop: true,
-      componentProps:{
-        'nome': meme.nome,
-        'descricao': meme.descricao,
-        'nivel': meme.nivel,
-        'imagem': meme.imagem
+  async presentPopover(meme,ev:any) {
+    const popover = await this.popupController.create({
+      component: MemePopupComponent,
+			componentProps:{
+        'id': meme.id,
+				'nome': meme.nome,
+				'descricao': meme.descricao,
+				'nivel': meme.nivel,
+        'imagem': meme.imagem,
+        'isNew': false
       }
     });
-    return await modal.present();
+		console.log(meme);
+    return await popover.present();
   }
 
   ngOnInit(){

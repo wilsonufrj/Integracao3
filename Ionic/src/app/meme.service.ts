@@ -13,6 +13,32 @@ export class MemeService {
 
   public getMemes():Observable<any> {
     return this.http.get(
-      this.backendURL + 'meme').pipe( map(res=>res) );
+      this.backendURL + 'meme');
+  }
+
+  public createMeme(meme):Observable<any> {
+    return this.http.post(
+      this.backendURL + 'meme', {
+        nome: meme.nome,
+        descricao: meme.descricao,
+        imagem: meme.imagem,
+        nivel: meme.nivel
+      });
+  }
+
+  public updateMeme(meme,id):Observable<any> {
+    return this.http.put(
+      this.backendURL + 'meme/' + id, {
+        nome: meme.nome,
+        descricao: meme.descricao,
+        imagem: meme.imagem,
+        nivel: meme.nivel
+      });
+  }
+
+  public deleteMeme(meme,id):Observable<any> {
+    return this.http.delete(
+      this.backendURL + "meme/" + id
+    );
   }
 }

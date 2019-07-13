@@ -11,24 +11,27 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopComponent } from './top/top.component';
-import { MemeModalPage } from './meme-modal/meme-modal.page';
+import { MemePopupComponent } from './meme-popup/meme-popup.component';
 
 import { MemeService } from './meme.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopComponent,
-    MemeModalPage
+	MemePopupComponent	   
   ],
-  entryComponents: [
-    MemeModalPage],
+  entryComponents:[
+	MemePopupComponent	   
+	],
   imports: [
     BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule,
     HttpModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     StatusBar,

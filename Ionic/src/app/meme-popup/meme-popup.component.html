@@ -1,0 +1,31 @@
+<ion-content class="meme-popover">
+	<ion-button (click)="dismiss()">
+		<ion-icon name="arrow-dropdown"></ion-icon>
+	</ion-button>
+	<ion-title>{{isNew? "Novo Meme": "Editar Meme"}}</ion-title>
+	<ion-grid>
+		<form #meme="ngForm" (ngSubmit)="onSubmit(cadastro)">
+			<ion-row>
+				<ion-label position="floating">Nome</ion-label>
+				<ion-input id="nome" name='nome' ngModel placeholder="Nome" [(ngModel)]=nome></ion-input>
+			</ion-row>
+			<ion-row>
+				<ion-label position="floating">Descrição</ion-label>
+				<ion-input id="descricao" name="descricao" ngModel placeholder="Descrição" [(ngModel)]=descricao></ion-input>
+			</ion-row>
+			<ion-row>
+				<ion-label position="floating">Link da Imagem</ion-label>
+				<ion-input id="imagem" name="imagem" ngModel placeholder="Link da Imagem" [(ngModel)]=imagem  ></ion-input>
+			</ion-row>
+			<ion-row>
+				<ion-label position="floating">Nivel de Engraçado</ion-label>
+				<ion-input id="number" name="nivel" ngModel type="number" [(ngModel)]=nivel ></ion-input>
+			</ion-row>
+			<ion-row>
+				<ion-button  shape="round" type="submit"> 
+					<ion-icon name="{{isNew? 'add':'create'}}"></ion-icon> {{isNew? "Adicionar":"Editar"}}
+				</ion-button>
+			</ion-row>
+		</form>
+	</ion-grid>
+</ion-content>

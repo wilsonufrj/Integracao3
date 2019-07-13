@@ -1,22 +1,22 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MemeModalPage } from './meme-modal.page';
+import { MemePopupComponent } from './meme-popup.component';
 
-describe('MemeModalPage', () => {
-  let component: MemeModalPage;
-  let fixture: ComponentFixture<MemeModalPage>;
+describe('MemePopupComponent', () => {
+  let component: MemePopupComponent;
+  let fixture: ComponentFixture<MemePopupComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MemeModalPage ],
+      declarations: [ MemePopupComponent ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MemeModalPage);
+    fixture = TestBed.createComponent(MemePopupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
