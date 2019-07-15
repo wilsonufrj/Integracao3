@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { MemeService }  from '../meme.service';
 import { ModalController } from '@ionic/angular';
-import { MemePopupComponent } from '../meme-popup/meme-popup.component'
 
 @Component({
   selector: 'app-tab2',
@@ -10,38 +9,10 @@ import { MemePopupComponent } from '../meme-popup/meme-popup.component'
 })
 export class Tab2Page {
   memes;
-	data;
-  constructor(
-    public memeService: MemeService,
-    public popupController: ModalController) {
-
+  constructor(public memeService: MemeService)  {
   }
 
-  async presentPopover(meme,ev:any) {
-    const popover = await this.popupController.create({
-      component: MemePopupComponent,
-			componentProps:{
-        'id': meme.id,
-				'nome': meme.nome,
-				'descricao': meme.descricao,
-				'nivel': meme.nivel,
-        'imagem': meme.imagem,
-        'isNew': false
-      }
-    });
-		popover.onDidDismiss().then((data) => {
-			this.data = data['changed'];
-			if(this.data){
-				this.updateMemes();
-				this.data = false;
-			}
-		});
-		console.log(meme);
-
-    return await popover.present();
-  }
-
-	updateMemes(): void {
+	getMemes(): void {
     this.memeService.getMemes().subscribe(
       (res) => {
         console.log(res);
@@ -53,8 +24,40 @@ export class Tab2Page {
     );
 	}
 
+	getMeme(id): void {
+			this.memeService.getMeme(id).subscribe(
+					(res) => {
+							console.log(res);
+					}
+			);
+	}
+
+	
+	updateMeme(meme): void {
+		this.memeService.updateMeme(meme,meme.id).subscribe(
+			(res) => {
+					console.log(res);
+			}
+		);
+	}
+
+	deleteMeme(meme): void {
+		this.memeService.deleteMeme(meme,meme.id).subscribe(
+			(res) => {
+					console.log(res);
+			}
+		);
+	}
+
+	createMeme(meme): void {
+		this.memeService.createMeme(meme).subscribe(
+			(res) => {
+					console.log(res);
+			}
+		);
+	}
+
   ngOnInit(){
-		this.updateMemes();
   }
 
 

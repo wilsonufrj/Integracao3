@@ -16,6 +16,11 @@ export class MemeService {
       this.backendURL + 'meme');
   }
 
+	public getMeme(id):Observable<any> {
+			return this.http.get(
+					this.backendURL + 'meme/' + id);
+	}
+
   public createMeme(meme):Observable<any> {
     return this.http.post(
       this.backendURL + 'meme', {
