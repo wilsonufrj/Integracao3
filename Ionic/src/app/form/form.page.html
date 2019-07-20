@@ -1,0 +1,43 @@
+<ion-content>
+  <ion-toolbar></ion-toolbar>
+  <ion-grid>
+    <ion-row>
+        <ion-col size=10>
+            <ion-searchbar search-icon="" [(ngModel)]="searchtext"></ion-searchbar>
+        </ion-col>
+        <ion-col size=2>
+            <ion-button (click)="getMeme(searchtext)"><ion-icon name='search'></ion-icon></ion-button>
+        </ion-col>
+    </ion-row>
+</ion-grid>
+  <ion-card>
+    <form form="ngModel" (ngSubmit)="onSubmit()">
+      <ion-item>
+      <ion-label>Method</ion-label>
+      <ion-select name="method" [(ngModel)]=form.method value="post" okText="Okay" cancelText="Dismiss">
+        <ion-select-option value="post">POST</ion-select-option>
+        <ion-select-option value="put">PUT</ion-select-option>
+        <ion-select-option value="delete">DELETE</ion-select-option>
+      </ion-select>
+    </ion-item>
+      <ion-item>
+        <ion-label>Nome:</ion-label>
+        <ion-input name="nome" [(ngModel)]=form.nome></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Descricao:</ion-label>
+        <ion-input name="descricao" [(ngModel)]=form.descricao></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Link da Imagem:</ion-label>
+        <ion-input name="imagem" [(ngModel)]=form.imagem></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Nivel:</ion-label>
+        <ion-input name="nivel" [(ngModel)]=form.nivel></ion-input>
+      </ion-item>
+      <ion-button type="submit">SUBMIT</ion-button>
+    </form>
+  </ion-card>
+  <ion-button href="tabs/tab2">Voltar</ion-button>
+</ion-content>
