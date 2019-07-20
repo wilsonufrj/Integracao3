@@ -11,7 +11,9 @@ export class FormPage implements OnInit {
 
   meme;
   searchtext: string;
-  form = {}
+  form = {
+    method: ''
+  }
   constructor(
     public memeService: MemeService,
     public router: Router) { }
