@@ -13,7 +13,7 @@ class MemeTableSeeder extends Seeder
     {
 		DB::table('memes')->insert([
 			'nome' => 'Minecraft',
-			'descricao' => 'Esse jogo é uma porra',
+			'descricao' => 'Esse jogo é muito bom!',
 			'nivel'=> 5,
 			'imagem' => 'no',
 		]);

@@ -14,12 +14,12 @@ class CreateMemesTable extends Migration
     public function up()
     {
         Schema::create('memes', function (Blueprint $table) {
-            $table->bigIncrements('id');
-			$table->string('nome');
-			$table->longText('descricao');
-			$table->integer('nivel');
-			$table->string('imagem');
-            $table->timestamps();
+          $table->bigIncrements('id');
+    			$table->string('nome');
+    			$table->longText('descricao');
+    			$table->integer('nivel');
+    			$table->string('imagem');
+          $table->timestamps();
         });
     }
 
