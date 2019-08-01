@@ -13,6 +13,7 @@ export class FormPage implements OnInit {
   searchtext: string;
   form = {
     method: ''
+    
   }
   constructor(
     public memeService: MemeService,

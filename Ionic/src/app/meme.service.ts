@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class MemeService {
 
-  backendURL:string = "https://localhost:8000/api/";
+  backendURL:string = "http://localhost:8000/api/";
   constructor(private http: HttpClient) { }
 
   public getMemes():Observable<any> {
@@ -17,20 +17,20 @@ export class MemeService {
 
 	public getMeme(id):Observable<any> {
 			return this.http.get(
-					this.backURL + 'meme/' + id);
+					this.backendURL + 'meme/' + id);
 	}
 
   public createMeme(meme):Observable<any> {
     return this.http.post(
       this.backendURL + 'meme', {
-        nome: meme.name,
+        nome: meme.nome,
         descricao: meme.descricao,
-        nivel: meme.level,
+        nivel: meme.nivel,
         imagem: meme.imagem
       });
   }
 
-  public updateMeme(meme,id) {
+  public updateMeme(meme,id):Observable<any> {
     return this.http.put(
       this.backendURL + 'meme/' + id, {
         nome: meme.nome,
@@ -42,7 +42,6 @@ export class MemeService {
 
   public deleteMeme(id):Observable<any> {
     return this.http.delete(
-      this.backendURL + id
-    );
+      this.backendURL + 'meme/' + id);
   }
 }

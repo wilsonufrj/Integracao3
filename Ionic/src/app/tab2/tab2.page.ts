@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MemeService } from './meme.service';
+import { MemeService } from '../meme.service';
 
 @Component({
 	selector: 'app-tab2',
@@ -14,7 +14,8 @@ export class Tab2Page {
 	getMemes(): void {
 		this.memeService.getMemes().subscribe(
 			(res) => {
-				window.location.href = res;
+				console.log(res);
+				this.memes = res;
 			}
 		);
 	}
@@ -23,6 +24,7 @@ export class Tab2Page {
 		this.memeService.getMeme(id).subscribe(
 			(res) => {
 				console.log(res);
+				this.memes = res;
 			}
 		);
 	}
@@ -32,11 +34,12 @@ export class Tab2Page {
 		this.memeService.updateMeme(meme, meme.id).subscribe(
 			(res) => {
 				console.log(res);
+				this.memes = res;
 			}
 		);
 	}
 
-	function deleteMeme(meme): void {
+	deleteMeme(meme): void {
 		this.memeService.deleteMeme(meme.id).subscribe(
 			(res) => {
 				console.log(res);
@@ -46,8 +49,10 @@ export class Tab2Page {
 
 	createMeme(meme): void {
 		this.memeService.createMeme(meme).subscribe(
-			(res) => {}
+			(res) => {
+				console.log(res);
+			}
 		);
-		console.log(res);
+		
 	}
 }

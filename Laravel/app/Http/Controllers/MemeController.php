@@ -14,7 +14,7 @@ class MemeController extends Controller
      */
     public function index()
     {
-		return response()->json(['https://www.youtube.com/watch?v=dQw4w9WgXcQ']);	
+		return Meme::all();	
     }
 
     /**
@@ -31,7 +31,7 @@ class MemeController extends Controller
 		$meme->descricao = $request->descricao;
 		$meme->nivel = $request->nivel;
 		$meme->imagem = $request->imagem;
-		$meme->salve();
+		$meme->save();
 		return response()->json([$meme]);
     }
 
@@ -54,7 +54,7 @@ class MemeController extends Controller
      * @param  \App\Meme  $meme
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $jotaquest, $id)
+    public function update(Request $request, $id)
     {
         $meme = Meme::findOrFail($id); 
 
@@ -80,6 +80,6 @@ class MemeController extends Controller
     public function destroy($id)
     {
 		Meme::destroy($id);
-		return response()->json(['https://www.youtube.com/watch?v=CHDqSkUFr8U']);
+		return response()->json(['Meme deletado!']);
     }
 }

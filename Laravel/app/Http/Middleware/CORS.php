@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class cOrS
+class CORS
 {
     /**
      * Handle an incoming request.
@@ -18,11 +18,11 @@ class cOrS
         $resposta = $next($request);
 
     // adiciona os headers a ela
-    $resposta   ->header('Access-Control-Allow-Origin' , 'http://localhost:8101')
+    $resposta   ->header('Access-Control-Allow-Origin' , 'http://localhost:8100')
                 ->header('Access-Control-Allow-Methods' , 'GET, POST, PUT, DELETE, OPTIONS' )
                 ->header('Access-Control-Allow-Headers' , 'Authorization, Content-Type' );
 
     // retorna a resposta 
-    return response()->json(['Tem mais erro aqui :D']);
+    return $resposta;
     }
 }

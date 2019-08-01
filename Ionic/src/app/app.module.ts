@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-import { HttpModule } from '@angular/http'
-import { HttpClientModule } from '@angular/common/http';
+import { HttpModule, Http } from '@angular/http';
+import { HttpClientModule, HttpClient, HttpHandler } from '@angular/common/http';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -18,8 +18,7 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
-    TopComponent,
-    MemeService,
+    TopComponent
   ],
   entryComponents:[
 	],
@@ -28,12 +27,14 @@ import { FormsModule } from '@angular/forms';
     IonicModule.forRoot(), 
     AppRoutingModule,
     HttpModule,
-    FormsModule
+    FormsModule, 
+    HttpClientModule,
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    HttpClientModule,
+    MemeService,
+    HttpClient,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
