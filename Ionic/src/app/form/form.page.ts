@@ -42,7 +42,7 @@ export class FormPage implements OnInit {
         break;
       case"delete":
         console.log('deletetipoo');
-        this.memeService.deleteMeme(this.form, this.meme.id).subscribe((res)=>{window.location.href = res});
+        this.memeService.deleteMeme(this.meme.id).subscribe((res)=>{window.location.href = res});
         break;
     }
     this.router.navigate(['tabs/tab2']);

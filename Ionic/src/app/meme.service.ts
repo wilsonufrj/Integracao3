@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -8,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class MemeService {
 
-  backendURL:string = "http://localhost:8000/api/";
+  backendURL:string = "https://localhost:8000/api/";
   constructor(private http: HttpClient) { }
 
   public getMemes():Observable<any> {
@@ -18,21 +17,20 @@ export class MemeService {
 
 	public getMeme(id):Observable<any> {
 			return this.http.get(
-					this.backendURL + 'meme/' + id);
+					this.backURL + 'meme/' + id);
 	}
 
   public createMeme(meme):Observable<any> {
     return this.http.post(
       this.backendURL + 'meme', {
-        nome: meme.nome,
+        nome: meme.name,
         descricao: meme.descricao,
-        nivel: meme.nivel,
+        nivel: meme.level,
         imagem: meme.imagem
       });
   }
 
-  public updateMeme(meme,id):Observable<any> {
-		console.log(this.backendURL + 'meme/' + id);
+  public updateMeme(meme,id) {
     return this.http.put(
       this.backendURL + 'meme/' + id, {
         nome: meme.nome,
@@ -42,9 +40,9 @@ export class MemeService {
       });
   }
 
-  public deleteMeme(meme,id):Observable<any> {
+  public deleteMeme(id):Observable<any> {
     return this.http.delete(
-      this.backendURL + "meme/" + id
+      this.backendURL + id
     );
   }
 }

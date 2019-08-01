@@ -18,7 +18,8 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
-    TopComponent
+    TopComponent,
+    MemeService,
   ],
   entryComponents:[
 	],
@@ -27,13 +28,12 @@ import { FormsModule } from '@angular/forms';
     IonicModule.forRoot(), 
     AppRoutingModule,
     HttpModule,
-    HttpClientModule,
     FormsModule
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    MemeService,
+    HttpClientModule,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

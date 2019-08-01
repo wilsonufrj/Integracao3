@@ -17,4 +17,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('meme','MemeController');
+Route::get('/meme','MemeController@index'):
+Route::get('/mene/{id}','MemeController@show');
+Route::post('/meme','MemeController@store');
+Route::put('meme/{id}','MemeController@update');
+Route::delete('\meme/{id}','MemeController@destroy');
